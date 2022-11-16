@@ -26,6 +26,7 @@ env:
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
+  NETSUPPORT: netsupport.mk
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -97,6 +98,7 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
+        [ -e $NETSUPPORT ] && mv $NETSUPPORT openwrt/package/kernel/linux/modules/netsupport.mk
 
     - name: Compile the firmware
       id: compile
