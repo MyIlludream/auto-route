@@ -98,11 +98,12 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        [ -e $NETSUPPORT ] && mv $NETSUPPORT openwrt/package/kernel/linux/modules/netsupport.mk
+        
 
     - name: Compile the firmware
       id: compile
       run: |
+        [ -e $NETSUPPORT ] && mv $NETSUPPORT openwrt/package/kernel/linux/modules/netsupport.mk
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
