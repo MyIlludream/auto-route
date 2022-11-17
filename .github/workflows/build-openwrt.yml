@@ -106,7 +106,7 @@ jobs:
       run: |
         [ -e $NETSUPPORT ] && mv $NETSUPPORT openwrt/package/kernel/linux/modules/netsupport.mk
         chmod -R 777 openwrt/package/kernel/linux/modules/netsupport.mk
-        [ -e $POWEROFFDEVICE ] && mv POWEROFFDEVICE openwrt/feeds/full/luci-app-poweroffdevice/Makefile
+        [ -e $POWEROFFDEVICE ] && mv $POWEROFFDEVICE openwrt/feeds/full/luci-app-poweroffdevice/Makefile
         chmod -R 777 openwrt/feeds/full/luci-app-poweroffdevice/Makefile        
         cd openwrt
         echo -e "$(nproc) thread compile"
