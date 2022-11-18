@@ -103,11 +103,7 @@ jobs:
 
     - name: Compile the firmware
       id: compile
-      run: |
-        [ -e $NETSUPPORT ] && mv $NETSUPPORT openwrt/package/kernel/linux/modules/netsupport.mk
-        chmod -R 777 openwrt/package/kernel/linux/modules/netsupport.mk
-        [ -e $POWEROFFDEVICE ] && mv $POWEROFFDEVICE openwrt/feeds/full/luci-app-poweroffdevice/Makefile
-        chmod -R 777 openwrt/feeds/full/luci-app-poweroffdevice/Makefile        
+      run: |      
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j4
